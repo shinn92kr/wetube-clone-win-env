@@ -19,6 +19,8 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(morgan("dev"));
 
+// pug 사용 설정
+app.set("view engine", "pug");
 // 글로벌 라우터
 app.use(routes.home, globalRouter);
 // 개별 라우터
