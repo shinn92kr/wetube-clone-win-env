@@ -8,19 +8,22 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
+import { localsMiddleware } from "./middlewares";
 
 // EXPRESS 객체 생성
 const app = express();
 
+// Middleware 1
+app.use(helmet());
+// pug 사용 설정
+app.set("view engine", "pug");
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(helmet());
 app.use(morgan("dev"));
+app.use(localsMiddleware);
 
-// pug 사용 설정
-app.set("view engine", "pug");
 // 글로벌 라우터
 app.use(routes.home, globalRouter);
 // 개별 라우터
