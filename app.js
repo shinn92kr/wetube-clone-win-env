@@ -14,7 +14,11 @@ import { localsMiddleware } from "./middlewares";
 const app = express();
 
 // Middleware 1
-app.use(helmet());
+// app.use(helmet());
+app.use(function (req, res, next) {
+    res.setHeader("Content-Security-Policy", "script-src 'self' https://archive.org");
+    return next();
+});
 // pug 사용 설정
 app.set("view engine", "pug");
 // Middleware
