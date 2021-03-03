@@ -1,4 +1,5 @@
 import { videos } from "../db";
+import routes from "../routes";
 
 // GLOBAL ROUTER PART
 export const home = (req, res) => {
@@ -12,7 +13,17 @@ export const search = (req, res) => {
 };
 
 // VIDEO ROUTER PART
-export const upload = (req, res) => res.render("upload", { pageTitle: "Upload" });
+export const getUpload = (req, res) => {
+    res.render("upload", { pageTitle: "Upload" });
+};
+export const postUpload = (req, res) => {
+    const {
+        body: { file, title, description },
+    } = req;
+    // TO DO : Upload and Save Video
+    res.redirect(routes.videos + routes.videoDetail(324393));
+};
+
 export const editVideo = (req, res) => res.render("editVideo", { pageTitle: "Edit Video" });
 export const deleteVideo = (req, res) => res.render("deleteVideo", { pageTitle: "Delete Video" });
 export const videoDetail = (req, res) => res.render("videoDetail", { pageTitle: "Video Detail" });

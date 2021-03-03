@@ -40,7 +40,7 @@ const routes = {
     upload: UPLOAD,
     editVideo: EDIT_VIDEO,
     deleteVideo: DELETE_VIDEO,
-    videoDatail: id => {
+    videoDetail: id => {
         if (id) {
             return `/${id}`;
         } else {
