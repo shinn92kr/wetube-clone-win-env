@@ -28,13 +28,25 @@ const routes = {
     users: USERS,
     editProfile: EDIT_PROFILE,
     changePassword: CHANGE_PASSWORD,
-    userDetail: USER_DETAIL,
+    userDetail: id => {
+        if (id) {
+            return `/${id}`;
+        } else {
+            return USER_DETAIL;
+        }
+    },
 
     videos: VIDEOS,
     upload: UPLOAD,
     editVideo: EDIT_VIDEO,
     deleteVideo: DELETE_VIDEO,
-    videoDatail: VIDEO_DETAIL,
+    videoDatail: id => {
+        if (id) {
+            return `/${id}`;
+        } else {
+            return VIDEO_DETAIL;
+        }
+    },
 };
 
 export default routes;
