@@ -22,6 +22,7 @@ app.use(function (req, res, next) {
 // pug 사용 설정
 app.set("view engine", "pug");
 // Middleware
+app.use("/uploads", express.static("uploads"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
