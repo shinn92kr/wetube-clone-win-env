@@ -4,7 +4,7 @@ import Video from "../models/Video";
 // GLOBAL ROUTER PART
 export const home = async (req, res) => {
     try {
-        const videos = await Video.find({});
+        const videos = await Video.find({}).sort({ _id: -1 });
         // console.log(videos);
         res.render("home", { pageTitle: "Home", videos });
     } catch (error) {
@@ -16,7 +16,7 @@ export const search = (req, res) => {
     const {
         query: { term: searchingBy },
     } = req;
-    res.render("search", { pageTitle: "Search", searchingBy, videos });
+    res.render("search", { pageTitle: "Search", searchingBy });
 };
 
 // VIDEO ROUTER PART
@@ -45,7 +45,7 @@ export const getEditVideo = async (req, res) => {
         const video = await Video.findById(id);
         res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
     } catch (error) {
-        res.redirect(route.home);
+        res.redirect(routes.home);
     }
 };
 
@@ -69,7 +69,9 @@ export const deleteVideo = async (req, res) => {
     } = req;
     try {
         await Video.findOneAndRemove({ _id: id });
-    } catch (error) {}
+    } catch (error) {
+        console.log(error);
+    }
     res.redirect(routes.home);
 };
 
