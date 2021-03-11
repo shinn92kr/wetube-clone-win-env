@@ -3,6 +3,7 @@ module.exports = {
         browser: true,
         es2021: true,
         node: true,
+        es6: true,
     },
     extends: ["airbnb-base", "plugin:prettier/recommended"],
     parserOptions: {
@@ -14,5 +15,6 @@ module.exports = {
         "no-console": "off",
         "spaced-comment": "off",
         "no-else-return": "off",
+        "prefer-const": 2,
     },
 };
